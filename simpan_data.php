@@ -5,12 +5,12 @@ include('config/koneksi.php');
 //ambil data dari form
 $id=$_POST['id'];
 $nama=$_POST['nama'];
-$alamat=$_POST['alamat'];
 $gender=$_POST['gender'];
+$alamat=$_POST['alamat'];
 $gaji=$_POST['gaji'];
  
 //memasukan data ke database
-$query="INSERT INTO tb_pengurus VALUES ('$id', '$nama', '$alamat', '$gender', '$gaji')";
+$query="INSERT INTO tb_pengurus VALUES ('$id', '$nama' , '$gender', '$alamat' , '$gaji')";
 $simpan=mysqli_query($conn,$query);
  
 ?>

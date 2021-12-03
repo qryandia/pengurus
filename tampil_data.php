@@ -1,4 +1,13 @@
 <?php
+
+if(!isset($_SESSION)) {
+    session_start();
+}
+
+//jika mengakses tanpa login maka kembali ke login
+if(!isset($_SESSION['username'])) {
+    header("location: login.php");
+}
 //memanggil file koneksi
 include('config/koneksi.php');
  
@@ -16,6 +25,10 @@ $data=mysqli_query($conn,$query);
 <body>
  
 <h1>Data Pengurus</h1>
+
+<p>
+    <a href="logout.php">Logout</a>
+</p>
 <table border="1">
     <tr>
         <th>ID</th>
@@ -51,10 +64,10 @@ $data=mysqli_query($conn,$query);
 <form method="post" action="simpan_data.php">
     <p>ID <input type="text" name="id" required="required"> </p>
     <p>Nama <input type="text" name="nama"> </p>
-    <p>Alamat <textarea name="alamat"></textarea> </p>
     <p>Gender <input type="radio" name="gender" value="L"> Laki-laki 
     <input type="radio" name="gender" value="P"> Perempuan
     </p>
+    <p>Alamat <textarea name="alamat"></textarea> </p>
     <p>Gaji <input type="number" name="gaji"></p>
     <p>
         <button type="submit">Simpan</button>
